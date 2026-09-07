@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/assets/logo-v1.png" alt="PyAIStack" width="720">
+  <img src="logo-v1.png" alt="PyAIStack" width="720">
 </p>
 
 <h1 align="center">PyAIStack</h1>
