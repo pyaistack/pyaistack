@@ -1,0 +1,3 @@
+Atlas exports
+
+Atlas is the reporting service. Atlas exports support CSV and JSON. Scheduled exports can be delivered nightly to the organization's storage bucket.

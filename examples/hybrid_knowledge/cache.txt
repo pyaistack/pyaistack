@@ -1,0 +1,3 @@
+Cache invalidation
+
+Invalidate cached entries when their underlying records change. Set expiration times to limit the lifetime of stale data.

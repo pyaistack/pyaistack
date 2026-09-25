@@ -1,0 +1,56 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pyaistack"
+version = "0.2.5"
+description = "A lightweight, modular Python microframework for building RAG and AI applications faster."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "Apache-2.0"
+license-files = ["LICEN[CS]E*"]
+authors = [{ name = "Prashant Band" }]
+keywords = ["ai", "agents", "llm", "ollama", "rag", "vector-search"]
+classifiers = [
+  "Intended Audience :: Developers",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = [
+  "ollama>=0.6.2,<1.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/pyaistack/pyaistack"
+Repository = "https://github.com/pyaistack/pyaistack"
+Issues = "https://github.com/pyaistack/pyaistack/issues"
+Documentation = "https://pyaistack.appvrs.com"
+Changelog = "https://pyaistack.appvrs.com/release-notes/"
+LinkedIn = "https://www.linkedin.com/in/prashantband/"
+
+[project.optional-dependencies]
+postgres = [
+  "psycopg[binary]>=3.2,<4.0",
+]
+dev = [
+  "pytest>=8.0,<9.0",
+  "ruff>=0.9,<1.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]

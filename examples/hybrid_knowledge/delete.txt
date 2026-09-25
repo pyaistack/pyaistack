@@ -1,0 +1,3 @@
+Account deletion
+
+Account deletion removes profile information after a 30-day waiting period. Legal retention requirements may apply to billing records.

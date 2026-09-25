@@ -1,0 +1,3 @@
+Object storage uploads
+
+Large files should be uploaded with multipart requests. Failed parts can be retried independently, without restarting the entire upload.

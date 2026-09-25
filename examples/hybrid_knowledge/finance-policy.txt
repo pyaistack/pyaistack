@@ -1,0 +1,3 @@
+FIN-042 purchase approvals
+
+Policy FIN-042 requires two approvals for purchases above 5000 credits. The department manager and finance controller must approve before an order is placed.

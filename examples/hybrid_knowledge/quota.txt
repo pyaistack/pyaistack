@@ -1,0 +1,3 @@
+API usage limits
+
+The standard API plan permits 100 requests per minute. Requests above that quota receive HTTP 429 and should retry with exponential backoff.

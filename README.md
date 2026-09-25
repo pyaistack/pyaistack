@@ -2,13 +2,11 @@
   <img src="logo-v1.png" alt="PyAIStack" width="720">
 </p>
 
-<h1 align="center">PyAIStack</h1>
-
 <p align="center">
   ⚡ A lightweight, modular microframework for complete AI applications.
 </p>
 
-PyAIStack helps you build RAG, agents, agentic tools, AI features, and provider integrations faster. This deliberately small first version implements the production-oriented RAG foundation, using Ollama and Gemma models by default.
+PyAIStack helps you build RAG, agents, agentic tools, AI features, and provider integrations faster. The current release provides a production-oriented foundations with local Ollama and Gemma models by default.
 
 ## ✨ Start simple
 
@@ -29,21 +27,33 @@ answer = rag.ask("Which service runs code without managing servers?")
 print(answer.text)
 ```
 
-## ✨ What v0.1 provides
+## 📁 Load, chunk, and persist local knowledge
 
-- `RAG` facade for indexing, retrieval, context construction and generation.
-- Ollama embedding provider using `embeddinggemma` by default.
-- Ollama chat provider using `gemma3:4b` by default.
-- Embedding model can be changed with one constructor argument.
-- Provider interfaces so Ollama can later be replaced with OpenAI, Bedrock, etc.
-- Thread-safe in-memory vector store with cosine similarity.
-- Vector dimension validation to prevent accidental mixed embedding models.
-- Metadata attached to each document and returned with sources.
-- Explicit source objects in every generated answer.
-- Bounded context size.
-- Basic retry/backoff and provider-specific errors.
-- Dependency injection for deterministic unit tests.
-- Type hints and small modules rather than one large class.
+Load a directory of UTF-8 `.txt` files, split documents before indexing, and retain the index in one SQLite file:
+
+```python
+from pyaistack import RAG
+from pyaistack.chunking import TextChunker
+from pyaistack.loaders import DirectoryLoader
+from pyaistack.vectorstores import SQLiteVectorStore
+
+documents = DirectoryLoader("knowledge", file_type="text").load()
+
+rag = RAG(
+    vector_store=SQLiteVectorStore("knowledge.db"),
+    chunker=TextChunker(chunk_size=1_000, chunk_overlap=150),
+)
+rag.add_documents(documents)
+```
+
+`file_type` is required. This release implements only `text`; PDF, DOCX, Markdown, and web loaders will be added only when implemented. `SQLiteVectorStore` uses exact cosine search and is intended for local, small-to-medium indexes.
+
+### Project links
+
+- [GitHub repository](https://github.com/pyaistack/pyaistack)
+- [Documentation](https://pyaistack.appvrs.com)
+- [Changelog](https://pyaistack.appvrs.com/release-notes/)
+- [LinkedIn — Prashant Band](https://www.linkedin.com/in/prashantband/)
 
 ## 🧠 Requirements
 
@@ -75,7 +85,7 @@ pip install -e ".[dev]"
 ## ▶️ Run
 
 ```bash
-python examples/basic.py
+python examples/basic/basic_rag.py
 ```
 
 ### How it works
@@ -110,6 +120,21 @@ OllamaChatProvider
 RAGAnswer(text + sources)
 ```
 
+## 📊 Optional observability
+
+Attach an observer only when your application needs sanitized timing and operation events:
+
+```python
+from pyaistack import RAG
+from pyaistack.observability import LoggingObserver
+
+rag = RAG(observers=[LoggingObserver()])
+```
+
+No events are created when no observer is configured. See the
+[observability guide](docs/docs_pyaistack/rag/observability.md) and
+[runnable example](examples/observability/rag_events.py).
+
 ## 🔧 Change the embedding model
 
 Only configuration changes:
@@ -131,6 +156,14 @@ rag = RAG(
 ```
 
 > Note: Do not change embedding models while an index contains vectors. Different models may produce different vector dimensions and, more importantly, incompatible vector spaces. Clear/rebuild the index when changing the embedding model.
+
+## ✍️ Add application instructions
+
+You can append instructions specific Prompt sufix to your application:
+
+```python
+rag = RAG(system_prompt_suffix="Answer with concise bullet points.")
+```
 
 ## 🌐 Configure Ollama host
 
@@ -165,6 +198,31 @@ rag.add(
 )
 ```
 
+Use normalized metadata filtering with either retrieval or answer generation.
+When stored metadata is a list, a scalar filter matches one list value:
+
+```python
+results = rag.search(
+    "What is the leave policy?",
+    metadata_filter={"department": "engineering"},
+)
+
+answer = rag.ask(
+    "What is the leave policy?",
+    metadata_filter={"department": "engineering"},
+)
+```
+
+`LLMMetadataFactory` stores generated values as normalized lists, for example
+`{"category": ["sustainability"], "language": ["en"]}`.
+
+For large text directories, generate metadata automatically with
+`FolderMetadataFactory` from folder names, `CSVMetadataFactory` from a
+metadata manifest, or `LLMMetadataFactory` from a bounded file sample. Use
+`DirectoryLoader.iter_load()` with
+`rag.add_documents([document])` to process one file at a time. See
+[loaders and chunking](docs/rag/loaders-and-chunking.md).
+
 ## ⚙️ Configure retrieval
 
 ```python
@@ -175,6 +233,7 @@ rag = RAG(
         top_k=5,
         min_score=0.25,
         max_context_chars=20_000,
+        include_sources=True,
     )
 )
 ```

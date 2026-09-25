@@ -1,0 +1,3 @@
+Support hours
+
+The support team answers standard requests Monday through Friday. Critical production outages have round-the-clock on-call support.

@@ -1,0 +1,3 @@
+SEC-017 audit retention
+
+SEC-017 requires security audit logs to be retained for 365 days. Logs must be stored encrypted with access limited to security administrators.

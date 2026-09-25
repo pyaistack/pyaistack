@@ -1,0 +1,3 @@
+Database backup recovery
+
+Database backups are taken every six hours. To recover lost records, restore a backup into a separate database and verify it before switching traffic.

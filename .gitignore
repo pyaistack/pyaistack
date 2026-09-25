@@ -1,0 +1,28 @@
+# Virtual environments and Python bytecode
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+
+# Test, lint, type-check, and coverage output
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# Packaging output
+*.egg-info/
+dist/
+build/
+*.db
+
+# Local configuration and operating-system files
+.env
+.DS_Store
+
+# Documentations
+
+# uv.lock is intentionally tracked for reproducible installs.

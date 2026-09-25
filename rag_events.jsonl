@@ -1,0 +1,8 @@
+{"details": {"input_count": 2, "model": "embeddinggemma"}, "duration_ms": 3277.03288200064, "error_type": null, "operation": "embedding", "run_id": "7a46eeb0-8489-4198-8980-0fcaf60a767c", "status": "success"}
+{"details": {"document_count": 2}, "duration_ms": 0.8533129994248156, "error_type": null, "operation": "indexing", "run_id": "7a46eeb0-8489-4198-8980-0fcaf60a767c", "status": "success"}
+{"details": {"document_count": 2}, "duration_ms": 3278.4733610005787, "error_type": null, "operation": "add", "run_id": "7a46eeb0-8489-4198-8980-0fcaf60a767c", "status": "success"}
+{"details": {"input_count": 1, "model": "embeddinggemma"}, "duration_ms": 267.6537830002417, "error_type": null, "operation": "embedding", "run_id": "e1135c5d-ce70-4c5a-88ff-a6e0edb5d291", "status": "success"}
+{"details": {"metadata_filter_keys": [], "mode": "vector", "result_count": 2}, "duration_ms": 0.6390459993781406, "error_type": null, "operation": "retrieval", "run_id": "e1135c5d-ce70-4c5a-88ff-a6e0edb5d291", "status": "success"}
+{"details": {"context_char_count": 144, "context_source_count": 2}, "duration_ms": 0.060290999499557074, "error_type": null, "operation": "context", "run_id": "e1135c5d-ce70-4c5a-88ff-a6e0edb5d291", "status": "success"}
+{"details": {"model": "gemma3:4b"}, "duration_ms": 19943.087075999756, "error_type": null, "operation": "generation", "run_id": "e1135c5d-ce70-4c5a-88ff-a6e0edb5d291", "status": "success"}
+{"details": {"citation_count": 2, "source_count": 2}, "duration_ms": 20212.211399999433, "error_type": null, "operation": "answer", "run_id": "e1135c5d-ce70-4c5a-88ff-a6e0edb5d291", "status": "success"}

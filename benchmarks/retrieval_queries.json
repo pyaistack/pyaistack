@@ -1,0 +1,74 @@
+[
+  {
+    "query": "FIN-042",
+    "relevant": [
+      "finance-policy"
+    ]
+  },
+  {
+    "query": "SEC-017",
+    "relevant": [
+      "retention"
+    ]
+  },
+  {
+    "query": "HR-008",
+    "relevant": [
+      "leave"
+    ]
+  },
+  {
+    "query": "Which export formats does Atlas offer?",
+    "relevant": [
+      "atlas"
+    ]
+  },
+  {
+    "query": "How can Beacon notify the on-call engineer?",
+    "relevant": [
+      "beacon"
+    ]
+  },
+  {
+    "query": "How should Nova credentials be rotated?",
+    "relevant": [
+      "nova"
+    ]
+  },
+  {
+    "query": "How do I recover accidentally deleted database records?",
+    "relevant": [
+      "backup"
+    ]
+  },
+  {
+    "query": "Can I get my money back after buying the product?",
+    "relevant": [
+      "refund"
+    ]
+  },
+  {
+    "query": "What should happen when the service becomes unavailable?",
+    "relevant": [
+      "outage"
+    ]
+  },
+  {
+    "query": "What can I do if a release starts failing?",
+    "relevant": [
+      "deploy"
+    ]
+  },
+  {
+    "query": "How often should I revisit my household finances?",
+    "relevant": [
+      "budget"
+    ]
+  },
+  {
+    "query": "Why is my uploaded file not showing up in search yet?",
+    "relevant": [
+      "search"
+    ]
+  }
+]

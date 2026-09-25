@@ -1,0 +1,3 @@
+Encryption keys
+
+Data is encrypted at rest and in transit. Encryption keys are rotated annually and access to key management is audited.
